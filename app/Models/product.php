@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use Cknow\Money\Money;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * 
+ *
  *
  * @property-read \App\Models\TFactory|null $use_factory
  * @method static \Database\Factories\productFactory factory($count = null, $state = [])
@@ -40,4 +41,8 @@ class product extends Model {
 		'price',
 		'live_at',
 	];
+
+	public function formattedPrice(): string {
+		return money( $this->price );
+	}
 }
