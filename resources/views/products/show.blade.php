@@ -13,10 +13,10 @@
                         {{$product->formattedPrice() }}
                     </div>
                     <div class=" text-gray-500">
-                        {{ $product->description }}
+                        {{ $product?->description }}
                     </div>
-                    <div class=" text-gray-500">
-                        prodcut variation selector
+                    <div class=" text-gray-500 mt-4">
+                        <livewire:product-selector :product="$product" />
                     </div>
                 </div>
             </div>

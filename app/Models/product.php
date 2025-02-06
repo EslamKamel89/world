@@ -5,9 +5,10 @@ namespace App\Models;
 use Cknow\Money\Money;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- *
+ * 
  *
  * @property-read \App\Models\TFactory|null $use_factory
  * @method static \Database\Factories\productFactory factory($count = null, $state = [])
@@ -30,6 +31,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|product whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|product whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|product whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Variation> $variations
+ * @property-read int|null $variations_count
  * @mixin \Eloquent
  */
 class product extends Model {
@@ -44,5 +47,8 @@ class product extends Model {
 
 	public function formattedPrice(): string {
 		return money( $this->price );
+	}
+	public function variations(): HasMany {
+		return $this->hasMany( Variation::class);
 	}
 }
