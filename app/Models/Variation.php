@@ -87,6 +87,11 @@ class Variation extends Model {
 		'parent_id',
 		'order',
 	];
+
+	public function formattedPrice(): string {
+		return money( $this->price );
+	}
+
 	public function product(): BelongsTo {
 		return $this->belongsTo( Product::class);
 	}

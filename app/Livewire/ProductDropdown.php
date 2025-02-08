@@ -21,6 +21,11 @@ class ProductDropdown extends Component {
 		return Variation::find( $this->selectedVariation );
 	}
 	public function updatedSelectedVariation() {
-		$this->pr( $this->selectedVariationModel );
+
+		if ( $this->selectedVariationModel?->sku ) {
+			$this->dispatch( 'skuVaraintSelected', selectedVariation: $this->selectedVariation );
+		} else {
+			$this->dispatch( 'skuVaraintSelected', selectedVariation: null );
+		}
 	}
 }
