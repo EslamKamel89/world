@@ -17,4 +17,20 @@ trait Pr {
 		return $value;
 
 	}
+	public static function info( $value, ?string $title = null, bool $json = true, bool $dd = false ): mixed {
+		if ( $dd ) {
+			dd( $value );
+		}
+		if ( $title ) {
+			info( str( '_/\\_' )->repeat( 2 )->toString() . ' eslam dev ' . str( '_/\\_' )->repeat( 2 )->toString() );
+			info( $title );
+		}
+		if ( $json ) {
+			info( json_decode( json_encode( $value ), true ) );
+		} else {
+			info( $value );
+		}
+		return $value;
+
+	}
 }

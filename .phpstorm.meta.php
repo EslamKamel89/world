@@ -2446,8 +2446,8 @@ namespace PHPSTORM_META {
         registerArgumentsSet('routes', 
 'debugbar.openhandler','debugbar.clockwork','debugbar.assets.css','debugbar.assets.js','debugbar.cache.delete',
 'debugbar.queries.explain','livewire.update','livewire.upload-file',
-'livewire.preview-file','dashboard','profile','register','login','password.request','password.reset',
-'verification.notice','verification.verify','password.confirm','storage.local',);
+'livewire.preview-file','dashboard','profile','register','login','password.request',
+'password.reset','verification.notice','verification.verify','password.confirm','storage.local',);
         registerArgumentsSet('views', 
 'components.action-message','components.application-logo','components.auth-session-status','components.category','components.danger-button',
 'components.dropdown','components.dropdown-link','components.input-error','components.input-label','components.modal',

@@ -12,10 +12,17 @@ class StockSeeder extends Seeder {
 	 */
 	public function run(): void {
 		Stock::insert( [ 
-			'variation_id' => 3,
-			'amount' => 10,
-			'created_at' => now(),
-			'updated_at' => now(),
+			[ 
+				'variation_id' => 3,
+				'amount' => 10,
+				'created_at' => now(),
+				'updated_at' => now(),
+			], [ 
+				'variation_id' => 4,
+				'amount' => 10,
+				'created_at' => now(),
+				'updated_at' => now(),
+			],
 		] );
 	}
 }

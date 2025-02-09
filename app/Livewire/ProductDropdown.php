@@ -18,14 +18,15 @@ class ProductDropdown extends Component {
 		if ( ! $this->selectedVariation ) {
 			return null;
 		}
-		return Variation::find( $this->selectedVariation );
+		return Variation::with( [ 'stocks', 'descendantsAndSelf' ] )->find( $this->selectedVariation );
 	}
 	public function updatedSelectedVariation() {
-
 		if ( $this->selectedVariationModel?->sku ) {
 			$this->dispatch( 'skuVaraintSelected', selectedVariation: $this->selectedVariation );
 		} else {
 			$this->dispatch( 'skuVaraintSelected', selectedVariation: null );
 		}
 	}
+
+
 }

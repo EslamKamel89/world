@@ -15,6 +15,7 @@ class ProductSelector extends Component {
 	public function mount( Product $product ) {
 		$this->product = $product;
 		$this->initialVariations = Variation::where( 'product_id', $this->product->id )
+			->with( [ 'stocks', 'descendantsAndSelf' ] )
 			->tree()->get()->toTree();
 	}
 	public function render() {

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -10,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property int $product_id
@@ -83,7 +85,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  */
 class Variation extends Model {
 	/** @use HasFactory<\Database\Factories\VariationFactory> */
-	use HasFactory, HasRecursiveRelationships;
+	use HasFactory, HasRecursiveRelationships, \App\Traits\Pr;
 	protected $fillable = [ 
 		'product_id',
 		'title',
@@ -94,14 +96,41 @@ class Variation extends Model {
 		'order',
 	];
 
+	protected static function booted(): void {
+		static::addGlobalScope( 'stocks', function (Builder $builder) {
+			$builder->with( [ 'stocks' ] );
+		} );
+	}
+
 	public function formattedPrice(): string {
 		return money( $this->price );
+	}
+
+	public function stockCount() {
+		return $this->descendantsAndSelf
+			->sum(
+				fn( Variation $variation ) => $variation->stocks->sum( 'amount' )
+			);
+	}
+
+	public function inStock(): bool {
+		return $this->stockCount() > 0;
+	}
+
+	public function outOfStock(): bool {
+		return ! $this->inStock();
+	}
+
+	public function lowStock(): bool {
+		return $this->inStock() && $this->stockCount() < 5;
 	}
 
 	public function product(): BelongsTo {
 		return $this->belongsTo( Product::class);
 	}
+
 	public function stocks(): HasMany {
 		return $this->hasMany( Stock::class);
 	}
+
 }
