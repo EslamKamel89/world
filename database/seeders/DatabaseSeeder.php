@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder {
 			CategorySeeder::class,
 			ProductSeeder::class,
 			VariationSeeder::class,
+			StockSeeder::class,
 		] );
 	}
 }
