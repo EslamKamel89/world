@@ -12,6 +12,7 @@
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.4",
         "livewire/volt": "^1.0",
+        "spatie/laravel-medialibrary": "^11.12",
         "staudenmeir/laravel-adjacency-list": "^1.0"
     },
     "require-dev": {

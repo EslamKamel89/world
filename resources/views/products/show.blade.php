@@ -3,7 +3,9 @@
         <div class=" overflow-hidden max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row gap-3">
                 <div class="flex-1 border-2 rounded-lg ">
-                    <div class="text-center">image source</div>
+                    <div class="text-center">
+                        <livewire:product-gallery :product="$product" />
+                    </div>
                 </div>
                 <div class="flex flex-col gap-2 flex-1">
                     <div class="text-2xl font-bold">

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductShowController;
+use App\Models\Category;
+use App\Models\product;
 use App\Models\Variation;
 use Illuminate\Support\Facades\Route;
 
@@ -18,10 +20,16 @@ Route::view( 'profile', 'profile' )
 Route::get( '/products/{product:slug}', ProductShowController::class);
 
 Route::get( '/test', function (Request $request) {
-	/** @var Variation $variation */
-	$variation = Variation::find( 1 );
-	$result = $variation->stockCount();
-	dd( json_decode( json_encode( $result ) ) );
+	/** @var Product $product  */
+	$product = Product::find( 1 );
+	// $product->addMedia( __DIR__ . '../../' . 'n_black.png' )
+	// 	->preservingOriginal()
+	// 	->toMediaCollection();
+	// $product->addMedia( __DIR__ . '../../' . 'n_white.png' )
+	// 	->preservingOriginal()
+	// 	->toMediaCollection();
+	return [ 'message' => 'success' ];
+
 } );
 
 require __DIR__ . '/auth.php';

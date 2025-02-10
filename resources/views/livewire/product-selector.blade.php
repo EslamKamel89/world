@@ -1,5 +1,6 @@
 <div>
-    @if ( $initialVariations )
+
+    @if ( $initialVariations && $initialVariations->isNotEmpty() )
 		<livewire:product-dropdown :variations="$initialVariations" :key="$initialVariations->first()->type" />
 	@endif
     @if ( $skuVariant )

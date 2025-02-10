@@ -25,7 +25,7 @@ class VariationSeeder extends Seeder {
 			],
 			[ 
 				'product_id' => 1,
-				'title' => 'Blue',
+				'title' => 'White',
 				'price' => 9030,
 				'type' => 'color',
 				'sku' => null,

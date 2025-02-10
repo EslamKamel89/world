@@ -13,6 +13,7 @@ class ProductSeeder extends Seeder {
 	public function run(): void {
 		product::insert( [ 
 			[ 'title' => 'Nike Air Force 1', 'slug' => str( 'Nike Air Force 1' )->slug(), 'description' => "Nike Air Force 1 description " . fake()->text(), 'price' => 800000, 'live_at' => now() ],
+			[ 'title' => 'Egyptian King', 'slug' => str( 'Egyptian King' )->slug(), 'description' => "Egyptian King description " . fake()->text(), 'price' => 800000, 'live_at' => now() ],
 		] );
 	}
 }
