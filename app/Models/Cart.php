@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-
+use Illuminate\Support\Str;
 /**
- * 
+ *
  *
  * @property int $id
  * @property int|null $user_id
@@ -37,6 +37,12 @@ class Cart extends Model {
 		'user_id',
 		'uuid',
 	];
+
+	public static function booted() {
+		static::creating( function (Cart $model) {
+			$model->uuid = (string) Str::uuid();
+		} );
+	}
 	public function user(): BelongsTo {
 		return $this->belongsTo( User::class);
 	}

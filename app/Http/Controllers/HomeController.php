@@ -8,8 +8,7 @@ use App\Models\product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller {
-	public function __invoke( CartInterface $cart ) {
-		$cart->create();
+	public function __invoke() {
 		$categories = $this->pr( Category::tree()->get()->toTree(), 'Categories tree' );
 		return view( 'home', get_defined_vars() );
 	}

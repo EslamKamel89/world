@@ -20,6 +20,7 @@ class ProductGallery extends Component {
 		$this->selectedMediaUrl = $mediaUrl;
 	}
 	public function registerMediaCollections(): void {
+		/** @phpstan-ignore-next-line */
 		$this
 			->addMediaCollection( 'default' )
 			->useFallbackUrl( asset( 'storage/placeholder.png' ) );

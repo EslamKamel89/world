@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\CartMiddleware;
 use App\Providers\CartServiceProvider;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -12,7 +13,9 @@ return Application::configure( basePath: dirname( __DIR__ ) )
 		health: '/up',
 	)
 	->withMiddleware( function (Middleware $middleware) {
-		//
+		$middleware->appendToGroup( 'web', [ 
+			CartMiddleware::class,
+		] );
 	} )
 	->withExceptions( function (Exceptions $exceptions) {
 		//

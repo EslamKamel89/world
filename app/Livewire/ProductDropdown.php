@@ -21,6 +21,7 @@ class ProductDropdown extends Component {
 		return Variation::with( [ 'stocks', 'descendantsAndSelf' ] )->find( $this->selectedVariation );
 	}
 	public function updatedSelectedVariation() {
+		/** @phpstan-ignore-next-line */
 		if ( $this->selectedVariationModel?->sku ) {
 			$this->dispatch( 'skuVaraintSelected', selectedVariation: $this->selectedVariation );
 		} else {
