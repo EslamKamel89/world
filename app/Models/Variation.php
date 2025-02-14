@@ -7,8 +7,11 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 
 /**
@@ -81,11 +84,15 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
  * @property-read int|null $stock_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Stock> $stocks
  * @property-read int|null $stocks_count
+ * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \Spatie\MediaLibrary\MediaCollections\Models\Media> $media
+ * @property-read int|null $media_count
+ * @property-read Collection<int, \App\Models\Cart> $carts
+ * @property-read int|null $carts_count
  * @mixin \Eloquent
  */
-class Variation extends Model {
+class Variation extends Model implements HasMedia {
 	/** @use HasFactory<\Database\Factories\VariationFactory> */
-	use HasFactory, HasRecursiveRelationships, \App\Traits\Pr;
+	use HasFactory, HasRecursiveRelationships, \App\Traits\Pr, InteractsWithMedia;
 	protected $fillable = [ 
 		'product_id',
 		'title',
@@ -131,6 +138,15 @@ class Variation extends Model {
 
 	public function stocks(): HasMany {
 		return $this->hasMany( Stock::class);
+	}
+
+	public function carts(): BelongsToMany {
+		return $this->belongsToMany(
+			Cart::class,
+			'cart_variation',
+			'variation_id',
+			'cart_id'
+		);
 	}
 
 }

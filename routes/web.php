@@ -21,13 +21,11 @@ Route::get( '/products/{product:slug}', ProductShowController::class);
 
 Route::get( '/test', function (Request $request) {
 	/** @var Product $product  */
-	$product = Product::find( 1 );
-	// $product->addMedia( __DIR__ . '../../' . 'n_black.png' )
+	// $variation = Variation::find( 6 );
+	// $variation->addMedia( __DIR__ . '../../' . 'n_white.png' )
 	// 	->preservingOriginal()
 	// 	->toMediaCollection();
-	// $product->addMedia( __DIR__ . '../../' . 'n_white.png' )
-	// 	->preservingOriginal()
-	// 	->toMediaCollection();
+
 	return [ 'message' => 'success' ];
 
 } );

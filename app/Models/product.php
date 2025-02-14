@@ -10,7 +10,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 /**
- *
+ * 
  *
  * @property-read \App\Models\TFactory|null $use_factory
  * @method static \Database\Factories\productFactory factory($count = null, $state = [])
