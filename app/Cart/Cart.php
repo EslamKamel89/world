@@ -3,6 +3,7 @@ namespace App\Cart;
 
 use App\Cart\Contracts\CartInterface;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Session\SessionManager;
 use \App\Models\Cart as CartModel;
 
@@ -31,4 +32,26 @@ class Cart implements CartInterface {
 		return $this->session->has( config( 'cart.session.key' ) );
 	}
 
+	/**
+	 * @return CartModel
+	 */
+	public function instance(): CartModel|null {
+		$uuid = $this->session->get( config( 'cart.session.key' ) );
+		return CartModel::whereUuid( $uuid )->first();
+	}
+
+
+	/**
+	 * @return Collection
+	 */
+	public function contents(): Collection {
+		return $this->instance()->variations;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function contentsCount(): int {
+		return $this->contents()->count();
+	}
 }

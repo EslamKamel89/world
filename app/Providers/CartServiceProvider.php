@@ -13,7 +13,9 @@ class CartServiceProvider extends ServiceProvider {
 	 */
 	public function register(): void {
 		//
-		$this->app->singleton( CartInterface::class, fn() => new Cart( session() ) );
+		$cart = new Cart( session() );
+		$this->app->singleton( CartInterface::class, fn() => $cart );
+		$this->app->instance( Cart::class, $cart );
 	}
 
 	/**

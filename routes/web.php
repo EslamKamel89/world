@@ -1,5 +1,7 @@
 <?php
 
+use App\Cart\Cart;
+use App\Cart\Contracts\CartInterface;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductShowController;
 use App\Models\Category;
@@ -19,12 +21,9 @@ Route::view( 'profile', 'profile' )
 
 Route::get( '/products/{product:slug}', ProductShowController::class);
 
-Route::get( '/test', function (Request $request) {
-	/** @var Product $product  */
-	// $variation = Variation::find( 6 );
-	// $variation->addMedia( __DIR__ . '../../' . 'n_white.png' )
-	// 	->preservingOriginal()
-	// 	->toMediaCollection();
+Route::get( '/test', function (Cart $cartService) {
+	dd( $cartService->contentsCount() );
+
 
 	return [ 'message' => 'success' ];
 

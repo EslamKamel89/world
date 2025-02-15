@@ -17,8 +17,10 @@ class CartMiddleware {
 	 * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
 	 */
 	public function handle( Request $request, Closure $next ): Response {
+
+		// dd( session()->all() );
 		if ( ! $this->cart->exists() ) {
-			// dd();
+			// dd( 'here' );
 			$this->cart->create( $request->user() );
 		}
 
