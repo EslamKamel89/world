@@ -22,7 +22,8 @@ Route::view( 'profile', 'profile' )
 Route::get( '/products/{product:slug}', ProductShowController::class);
 
 Route::get( '/test', function (Cart $cartService) {
-	dd( $cartService->contentsCount() );
+	$variation = Variation::find( 1 );
+	dd( $variation );
 
 
 	return [ 'message' => 'success' ];

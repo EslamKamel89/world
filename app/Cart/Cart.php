@@ -3,11 +3,20 @@ namespace App\Cart;
 
 use App\Cart\Contracts\CartInterface;
 use App\Models\User;
+use App\Models\Variation;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Session\SessionManager;
 use \App\Models\Cart as CartModel;
 
 class Cart implements CartInterface {
+
+
+	/**
+	 * @var CartModel|null
+	 */
+	protected ?CartModel $cartModel = null;
+
+
 	public function __construct( protected SessionManager $session ) {
 	}
 	/**
@@ -36,8 +45,11 @@ class Cart implements CartInterface {
 	 * @return CartModel
 	 */
 	public function instance(): CartModel|null {
-		$uuid = $this->session->get( config( 'cart.session.key' ) );
-		return CartModel::whereUuid( $uuid )->first();
+		if ( ! $this->cartModel ) {
+			$uuid = $this->session->get( config( 'cart.session.key' ) );
+			$this->cartModel = CartModel::whereUuid( $uuid )->first();
+		}
+		return $this->cartModel;
 	}
 
 
@@ -53,5 +65,20 @@ class Cart implements CartInterface {
 	 */
 	public function contentsCount(): int {
 		return $this->contents()->count();
+	}
+
+	public function add( Variation $variation, int $quantity = 1 ) {
+		if ( $existingVariation = $this->getExistingVariation( $variation ) ) {
+			$quantity = $existingVariation->pivot->quantity + $quantity;
+		}
+		$this->instance()->variations()->syncWithoutDetaching( [ 
+			$variation->id => [ 
+				'quantity' => min( $quantity, $existingVariation?->stockCount() ?? 1 ),
+			]
+		] );
+	}
+
+	public function getExistingVariation( Variation $variation ) {
+		return $this->instance()->variations->find( $variation->id );
 	}
 }

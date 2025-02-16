@@ -9,8 +9,13 @@ use Livewire\Component;
 use App\Livewire\Actions\Logout;
 
 class Navigation extends Component {
+
+	protected $listeners = [ 
+		'cart.update' => '$refresh'
+	];
 	#[Computed ]
 	public function cart() {
+
 		$cartService = App::make( CartService::class);
 		return $cartService;
 	}

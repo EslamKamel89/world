@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
 /**
- *
+ * 
  *
  * @property int $id
  * @property int|null $user_id
@@ -52,7 +52,6 @@ class Cart extends Model {
 			'cart_variation',
 			'cart_id',
 			'variation_id',
-
-		);
+		)->withPivot( 'quantity' )->withTimestamps();
 	}
 }

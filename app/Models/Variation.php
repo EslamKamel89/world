@@ -146,7 +146,7 @@ class Variation extends Model implements HasMedia {
 			'cart_variation',
 			'variation_id',
 			'cart_id'
-		);
+		)->withPivot( 'quantity' )->withTimestamps();
 	}
 
 }
