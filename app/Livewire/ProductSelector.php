@@ -38,5 +38,9 @@ class ProductSelector extends Component {
 		// dd( $cartService, $this->skuVariant );
 		$cartService->add( $this->skuVariant, 1 );
 		$this->dispatch( 'cart.update' );
+		$this->dispatch( 'notification', [ 
+			'body' => 'Added to cart',
+			'timeout' => 4000,
+		] );
 	}
 }

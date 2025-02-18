@@ -2,6 +2,7 @@
 
 use App\Cart\Cart;
 use App\Cart\Contracts\CartInterface;
+use App\Http\Controllers\CartIndexController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductShowController;
 use App\Models\Category;
@@ -20,6 +21,9 @@ Route::view( 'profile', 'profile' )
 	->name( 'profile' );
 
 Route::get( '/products/{product:slug}', ProductShowController::class);
+
+Route::get( '/cart', CartIndexController::class)->name( 'cart.index' );
+
 
 Route::get( '/test', function (Cart $cartService) {
 	$variation = Variation::find( 1 );

@@ -34,6 +34,7 @@
         <main>
             {{ $slot }}
         </main>
+        <x-notification />
     </div>
     <livewire:scripts />
 </body>
