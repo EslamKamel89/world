@@ -3,11 +3,10 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use App\Cart\Cart as CartService;
 
-class Cart extends Component
-{
-    public function render()
-    {
-        return view('livewire.cart');
-    }
+class Cart extends Component {
+	public function render( CartService $cartService ) {
+		return view( 'livewire.cart', get_defined_vars() );
+	}
 }
