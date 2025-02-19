@@ -47,7 +47,9 @@ class Cart implements CartInterface {
 	public function instance(): CartModel|null {
 		if ( ! $this->cartModel ) {
 			$uuid = $this->session->get( config( 'cart.session.key' ) );
-			$this->cartModel = CartModel::whereUuid( $uuid )->first();
+			$this->cartModel = CartModel::with(
+				[ 'variations.ancestorsAndSelf', 'variations.product', 'variations.media', 'variations.descendantsAndSelf.stocks' ]
+			)->whereUuid( $uuid )->first();
 		}
 		return $this->cartModel;
 	}

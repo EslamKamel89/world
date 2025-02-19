@@ -15,7 +15,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property int $product_id
@@ -110,6 +110,7 @@ class Variation extends Model implements HasMedia {
 	}
 
 	public function formattedPrice(): string {
+
 		return money( $this->price );
 	}
 
