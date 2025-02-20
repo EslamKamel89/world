@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Cart\Cart as CartService;
+use App\Cart\CartService;
 
 class Cart extends Component {
 	public function render( CartService $cartService ) {

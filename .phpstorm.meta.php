@@ -13,7 +13,7 @@ namespace PHPSTORM_META {
     */
     override(new \Illuminate\Contracts\Container\Container, map([
         '' => '@',
-            'App\Cart\Contracts\CartInterface' => \App\Cart\Cart::class,
+            'App\Cart\Contracts\CartInterface' => \App\Cart\CartService::class,
             'Illuminate\Bus\BatchRepository' => \Illuminate\Bus\DatabaseBatchRepository::class,
             'Illuminate\Contracts\Auth\Access\Gate' => \Illuminate\Auth\Access\Gate::class,
             'Illuminate\Contracts\Broadcasting\Broadcaster' => \Illuminate\Broadcasting\Broadcasters\LogBroadcaster::class,
@@ -81,7 +81,7 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Container\Container::makeWith(0), map([
         '' => '@',
-            'App\Cart\Contracts\CartInterface' => \App\Cart\Cart::class,
+            'App\Cart\Contracts\CartInterface' => \App\Cart\CartService::class,
             'Illuminate\Bus\BatchRepository' => \Illuminate\Bus\DatabaseBatchRepository::class,
             'Illuminate\Contracts\Auth\Access\Gate' => \Illuminate\Auth\Access\Gate::class,
             'Illuminate\Contracts\Broadcasting\Broadcaster' => \Illuminate\Broadcasting\Broadcasters\LogBroadcaster::class,
@@ -149,7 +149,7 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Contracts\Container\Container::get(0), map([
         '' => '@',
-            'App\Cart\Contracts\CartInterface' => \App\Cart\Cart::class,
+            'App\Cart\Contracts\CartInterface' => \App\Cart\CartService::class,
             'Illuminate\Bus\BatchRepository' => \Illuminate\Bus\DatabaseBatchRepository::class,
             'Illuminate\Contracts\Auth\Access\Gate' => \Illuminate\Auth\Access\Gate::class,
             'Illuminate\Contracts\Broadcasting\Broadcaster' => \Illuminate\Broadcasting\Broadcasters\LogBroadcaster::class,
@@ -217,7 +217,7 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Contracts\Container\Container::make(0), map([
         '' => '@',
-            'App\Cart\Contracts\CartInterface' => \App\Cart\Cart::class,
+            'App\Cart\Contracts\CartInterface' => \App\Cart\CartService::class,
             'Illuminate\Bus\BatchRepository' => \Illuminate\Bus\DatabaseBatchRepository::class,
             'Illuminate\Contracts\Auth\Access\Gate' => \Illuminate\Auth\Access\Gate::class,
             'Illuminate\Contracts\Broadcasting\Broadcaster' => \Illuminate\Broadcasting\Broadcasters\LogBroadcaster::class,
@@ -285,7 +285,7 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Contracts\Container\Container::makeWith(0), map([
         '' => '@',
-            'App\Cart\Contracts\CartInterface' => \App\Cart\Cart::class,
+            'App\Cart\Contracts\CartInterface' => \App\Cart\CartService::class,
             'Illuminate\Bus\BatchRepository' => \Illuminate\Bus\DatabaseBatchRepository::class,
             'Illuminate\Contracts\Auth\Access\Gate' => \Illuminate\Auth\Access\Gate::class,
             'Illuminate\Contracts\Broadcasting\Broadcaster' => \Illuminate\Broadcasting\Broadcasters\LogBroadcaster::class,
@@ -353,7 +353,7 @@ namespace PHPSTORM_META {
         ]));
     override(\App::get(0), map([
         '' => '@',
-            'App\Cart\Contracts\CartInterface' => \App\Cart\Cart::class,
+            'App\Cart\Contracts\CartInterface' => \App\Cart\CartService::class,
             'Illuminate\Bus\BatchRepository' => \Illuminate\Bus\DatabaseBatchRepository::class,
             'Illuminate\Contracts\Auth\Access\Gate' => \Illuminate\Auth\Access\Gate::class,
             'Illuminate\Contracts\Broadcasting\Broadcaster' => \Illuminate\Broadcasting\Broadcasters\LogBroadcaster::class,
@@ -421,7 +421,7 @@ namespace PHPSTORM_META {
         ]));
     override(\App::make(0), map([
         '' => '@',
-            'App\Cart\Contracts\CartInterface' => \App\Cart\Cart::class,
+            'App\Cart\Contracts\CartInterface' => \App\Cart\CartService::class,
             'Illuminate\Bus\BatchRepository' => \Illuminate\Bus\DatabaseBatchRepository::class,
             'Illuminate\Contracts\Auth\Access\Gate' => \Illuminate\Auth\Access\Gate::class,
             'Illuminate\Contracts\Broadcasting\Broadcaster' => \Illuminate\Broadcasting\Broadcasters\LogBroadcaster::class,
@@ -489,7 +489,7 @@ namespace PHPSTORM_META {
         ]));
     override(\App::makeWith(0), map([
         '' => '@',
-            'App\Cart\Contracts\CartInterface' => \App\Cart\Cart::class,
+            'App\Cart\Contracts\CartInterface' => \App\Cart\CartService::class,
             'Illuminate\Bus\BatchRepository' => \Illuminate\Bus\DatabaseBatchRepository::class,
             'Illuminate\Contracts\Auth\Access\Gate' => \Illuminate\Auth\Access\Gate::class,
             'Illuminate\Contracts\Broadcasting\Broadcaster' => \Illuminate\Broadcasting\Broadcasters\LogBroadcaster::class,
@@ -557,7 +557,7 @@ namespace PHPSTORM_META {
         ]));
     override(\app(0), map([
         '' => '@',
-            'App\Cart\Contracts\CartInterface' => \App\Cart\Cart::class,
+            'App\Cart\Contracts\CartInterface' => \App\Cart\CartService::class,
             'Illuminate\Bus\BatchRepository' => \Illuminate\Bus\DatabaseBatchRepository::class,
             'Illuminate\Contracts\Auth\Access\Gate' => \Illuminate\Auth\Access\Gate::class,
             'Illuminate\Contracts\Broadcasting\Broadcaster' => \Illuminate\Broadcasting\Broadcasters\LogBroadcaster::class,
@@ -625,7 +625,7 @@ namespace PHPSTORM_META {
         ]));
     override(\resolve(0), map([
         '' => '@',
-            'App\Cart\Contracts\CartInterface' => \App\Cart\Cart::class,
+            'App\Cart\Contracts\CartInterface' => \App\Cart\CartService::class,
             'Illuminate\Bus\BatchRepository' => \Illuminate\Bus\DatabaseBatchRepository::class,
             'Illuminate\Contracts\Auth\Access\Gate' => \Illuminate\Auth\Access\Gate::class,
             'Illuminate\Contracts\Broadcasting\Broadcaster' => \Illuminate\Broadcasting\Broadcasters\LogBroadcaster::class,
@@ -693,7 +693,7 @@ namespace PHPSTORM_META {
         ]));
     override(\Psr\Container\ContainerInterface::get(0), map([
         '' => '@',
-            'App\Cart\Contracts\CartInterface' => \App\Cart\Cart::class,
+            'App\Cart\Contracts\CartInterface' => \App\Cart\CartService::class,
             'Illuminate\Bus\BatchRepository' => \Illuminate\Bus\DatabaseBatchRepository::class,
             'Illuminate\Contracts\Auth\Access\Gate' => \Illuminate\Auth\Access\Gate::class,
             'Illuminate\Contracts\Broadcasting\Broadcaster' => \Illuminate\Broadcasting\Broadcasters\LogBroadcaster::class,
@@ -2620,28 +2620,30 @@ namespace PHPSTORM_META {
         registerArgumentsSet('routes', 
 'debugbar.openhandler','debugbar.clockwork','debugbar.assets.css','debugbar.assets.js','debugbar.cache.delete',
 'debugbar.queries.explain','livewire.update','livewire.upload-file',
-'livewire.preview-file','dashboard','profile','register','login','password.request',
-'password.reset','verification.notice','verification.verify','password.confirm','storage.local',);
+'livewire.preview-file','dashboard','profile','cart.index','register','login',
+'password.request','password.reset','verification.notice','verification.verify','password.confirm',
+'storage.local',);
         registerArgumentsSet('views', 
-'components.action-message','components.application-logo','components.auth-session-status','components.category','components.danger-button',
-'components.dropdown','components.dropdown-link','components.input-error','components.input-label','components.modal',
-'components.nav-link','components.primary-button','components.responsive-nav-link','components.secondary-button','components.select',
-'components.text-input','dashboard','home','layouts.app','layouts.guest',
-'livewire.navigation','livewire.pages.auth.confirm-password','livewire.pages.auth.forgot-password','livewire.pages.auth.login','livewire.pages.auth.register',
-'livewire.pages.auth.reset-password','livewire.pages.auth.verify-email','livewire.product-dropdown','livewire.product-gallery','livewire.product-selector',
-'livewire.profile.delete-user-form','livewire.profile.update-password-form','livewire.profile.update-profile-information-form','livewire.welcome.navigation','products.show',
-'profile','volt-livewire::navigation','volt-livewire::pages.auth.confirm-password','volt-livewire::pages.auth.forgot-password','volt-livewire::pages.auth.login',
-'volt-livewire::pages.auth.register','volt-livewire::pages.auth.reset-password','volt-livewire::pages.auth.verify-email','volt-livewire::product-dropdown','volt-livewire::product-gallery',
-'volt-livewire::product-selector','volt-livewire::profile.delete-user-form','volt-livewire::profile.update-password-form','volt-livewire::profile.update-profile-information-form','volt-livewire::welcome.navigation',
-'laravel-exceptions-renderer::components.card','laravel-exceptions-renderer::components.context','laravel-exceptions-renderer::components.editor','laravel-exceptions-renderer::components.header','laravel-exceptions-renderer::components.icons.chevron-down',
-'laravel-exceptions-renderer::components.icons.chevron-up','laravel-exceptions-renderer::components.icons.computer-desktop','laravel-exceptions-renderer::components.icons.moon','laravel-exceptions-renderer::components.icons.sun','laravel-exceptions-renderer::components.layout',
-'laravel-exceptions-renderer::components.navigation','laravel-exceptions-renderer::components.theme-switcher','laravel-exceptions-renderer::components.trace','laravel-exceptions-renderer::components.trace-and-editor','laravel-exceptions-renderer::show',
-'laravel-exceptions::401','laravel-exceptions::402','laravel-exceptions::403','laravel-exceptions::404','laravel-exceptions::419',
-'laravel-exceptions::429','laravel-exceptions::500','laravel-exceptions::503','laravel-exceptions::layout','laravel-exceptions::minimal',
-'livewire::bootstrap','livewire::simple-bootstrap','livewire::simple-tailwind','livewire::tailwind','media-library::image',
-'media-library::placeholderSvg','media-library::responsiveImage','media-library::responsiveImageWithPlaceholder','notifications::email','pagination::bootstrap-4',
-'pagination::bootstrap-5','pagination::default','pagination::semantic-ui','pagination::simple-bootstrap-4','pagination::simple-bootstrap-5',
-'pagination::simple-default','pagination::simple-tailwind','pagination::tailwind',);
+'cart.index','components.action-message','components.application-logo','components.auth-session-status','components.category',
+'components.danger-button','components.dropdown','components.dropdown-link','components.input-error','components.input-label',
+'components.modal','components.nav-link','components.notification','components.primary-button','components.responsive-nav-link',
+'components.secondary-button','components.select','components.text-input','dashboard','home',
+'layouts.app','layouts.guest','livewire.cart','livewire.cart-item','livewire.navigation',
+'livewire.pages.auth.confirm-password','livewire.pages.auth.forgot-password','livewire.pages.auth.login','livewire.pages.auth.register','livewire.pages.auth.reset-password',
+'livewire.pages.auth.verify-email','livewire.product-dropdown','livewire.product-gallery','livewire.product-selector','livewire.profile.delete-user-form',
+'livewire.profile.update-password-form','livewire.profile.update-profile-information-form','livewire.welcome.navigation','products.show','profile',
+'volt-livewire::cart','volt-livewire::cart-item','volt-livewire::navigation','volt-livewire::pages.auth.confirm-password','volt-livewire::pages.auth.forgot-password',
+'volt-livewire::pages.auth.login','volt-livewire::pages.auth.register','volt-livewire::pages.auth.reset-password','volt-livewire::pages.auth.verify-email','volt-livewire::product-dropdown',
+'volt-livewire::product-gallery','volt-livewire::product-selector','volt-livewire::profile.delete-user-form','volt-livewire::profile.update-password-form','volt-livewire::profile.update-profile-information-form',
+'volt-livewire::welcome.navigation','laravel-exceptions-renderer::components.card','laravel-exceptions-renderer::components.context','laravel-exceptions-renderer::components.editor','laravel-exceptions-renderer::components.header',
+'laravel-exceptions-renderer::components.icons.chevron-down','laravel-exceptions-renderer::components.icons.chevron-up','laravel-exceptions-renderer::components.icons.computer-desktop','laravel-exceptions-renderer::components.icons.moon','laravel-exceptions-renderer::components.icons.sun',
+'laravel-exceptions-renderer::components.layout','laravel-exceptions-renderer::components.navigation','laravel-exceptions-renderer::components.theme-switcher','laravel-exceptions-renderer::components.trace','laravel-exceptions-renderer::components.trace-and-editor',
+'laravel-exceptions-renderer::show','laravel-exceptions::401','laravel-exceptions::402','laravel-exceptions::403','laravel-exceptions::404',
+'laravel-exceptions::419','laravel-exceptions::429','laravel-exceptions::500','laravel-exceptions::503','laravel-exceptions::layout',
+'laravel-exceptions::minimal','livewire::bootstrap','livewire::simple-bootstrap','livewire::simple-tailwind','livewire::tailwind',
+'media-library::image','media-library::placeholderSvg','media-library::responsiveImage','media-library::responsiveImageWithPlaceholder','notifications::email',
+'pagination::bootstrap-4','pagination::bootstrap-5','pagination::default','pagination::semantic-ui','pagination::simple-bootstrap-4',
+'pagination::simple-bootstrap-5','pagination::simple-default','pagination::simple-tailwind','pagination::tailwind',);
         registerArgumentsSet('translations', 
 'auth.failed','auth.password','auth.throttle','pagination.previous','pagination.next',
 'passwords.reset','passwords.sent','passwords.throttled','passwords.token','passwords.user',

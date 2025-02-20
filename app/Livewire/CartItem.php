@@ -20,15 +20,6 @@ class CartItem extends Component {
 		return view( 'livewire.cart-item' );
 	}
 	public function updatedQuantity() {
-		// dd( $this->cartVariation );
-		// dd( $this->variation->pivot() );
-		// DB::table( 'cart_variation' )->where( 'cart_id', $this->cartVariation->cart_id )
-		// 	->where( 'variation_id', $this->cartVariation->variation_id )
-		// 	->update( [
-		// 		'quantity' => $this->quantity,
-		// 	] );
-		// $this->cartVariation()->update( [
-		// 	'quantity' => $this->quantity,
-		// ] );
+
 	}
 }

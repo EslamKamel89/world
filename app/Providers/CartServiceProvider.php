@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Providers;
-use App\Cart\Cart;
+use App\Cart\CartService;
 use App\Cart\Contracts\CartInterface;
 use Illuminate\Support\Facades\App;
 
@@ -13,9 +13,9 @@ class CartServiceProvider extends ServiceProvider {
 	 */
 	public function register(): void {
 		//
-		$cart = new Cart( session() );
+		$cart = new CartService( session() );
 		$this->app->singleton( CartInterface::class, fn() => $cart );
-		$this->app->instance( Cart::class, $cart );
+		$this->app->instance( CartService::class, $cart );
 	}
 
 	/**

@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Cart\Cart as CartService;
+use App\Cart\CartService;
 use App\Models\product;
 use App\Models\Variation;
 use Livewire\Attributes\On;

@@ -1,6 +1,6 @@
 <?php
 
-use App\Cart\Cart;
+use App\Cart\CartService;
 use App\Cart\Contracts\CartInterface;
 use App\Http\Controllers\CartIndexController;
 use App\Http\Controllers\HomeController;
@@ -25,7 +25,7 @@ Route::get( '/products/{product:slug}', ProductShowController::class);
 Route::get( '/cart', CartIndexController::class)->name( 'cart.index' );
 
 
-Route::get( '/test', function (Cart $cartService) {
+Route::get( '/test', function (CartService $cartService) {
 	$variation = Variation::find( 1 );
 	dd( $variation );
 

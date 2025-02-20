@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Session\SessionManager;
 use \App\Models\Cart as CartModel;
 
-class Cart implements CartInterface {
+class CartService implements CartInterface {
 
 
 	/**

@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Cart\Cart as CartService;
+use App\Cart\CartService;
 use Illuminate\Support\Facades\App;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
