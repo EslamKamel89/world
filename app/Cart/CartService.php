@@ -83,4 +83,11 @@ class CartService implements CartInterface {
 	public function getExistingVariation( Variation $variation ) {
 		return $this->instance()->variations->find( $variation->id );
 	}
+
+	public function changeCount( Variation $variation, int $quantity ) {
+		// dd( $variation, $quantity );
+		$this->instance()->variations()->updateExistingPivot( $variation->id, [ 
+			'quantity' => min( $quantity, $variation->stockCount() )
+		] );
+	}
 }
