@@ -6,15 +6,15 @@ use App\Models\User;
 use App\Models\Variation;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Session\SessionManager;
-use \App\Models\Cart as CartModel;
+use \App\Models\Cart;
 
 class CartService implements CartInterface {
 
 
 	/**
-	 * @var CartModel|null
+	 * @var Cart|null
 	 */
-	protected ?CartModel $cartModel = null;
+	protected ?Cart $cartModel = null;
 
 
 	public function __construct( protected SessionManager $session ) {
@@ -42,12 +42,12 @@ class CartService implements CartInterface {
 	}
 
 	/**
-	 * @return CartModel
+	 * @return Cart
 	 */
-	public function instance(): CartModel|null {
+	public function instance(): Cart|null {
 		if ( ! $this->cartModel ) {
 			$uuid = $this->session->get( config( 'cart.session.key' ) );
-			$this->cartModel = CartModel::with(
+			$this->cartModel = Cart::with(
 				[ 'variations.ancestorsAndSelf', 'variations.product', 'variations.media', 'variations.descendantsAndSelf.stocks' ]
 			)->whereUuid( $uuid )->first();
 		}
@@ -66,6 +66,7 @@ class CartService implements CartInterface {
 	 * @return int
 	 */
 	public function contentsCount(): int {
+		// dd( $this->contents()->count() );
 		return $this->contents()->count();
 	}
 
@@ -89,5 +90,11 @@ class CartService implements CartInterface {
 		$this->instance()->variations()->updateExistingPivot( $variation->id, [ 
 			'quantity' => min( $quantity, $variation->stockCount() )
 		] );
+	}
+	public function remove( Variation $variation ) {
+		$this->instance()->variations()->detach( $variation->id );
+	}
+	public function isEmpty() {
+		return $this->instance()->variations->isEmpty();
 	}
 }

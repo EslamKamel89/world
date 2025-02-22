@@ -19,7 +19,7 @@
 					<option value="{{ $i }}">{{ $i }}</option>
 				@endfor
             </select>
-            <button class="btn btn-ghost">Remove</button>
+            <button class="btn btn-ghost" wire:click="remove">Remove</button>
         </div>
     </div>
 </div>

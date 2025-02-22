@@ -20,7 +20,12 @@ class CartItem extends Component {
 	}
 	public function updatedQuantity() {
 		app( CartService::class)->changeCount( $this->variation, $this->quantity );
-		$this->dispatch( 'cart.updated' );
+		$this->dispatch( 'cart.update' );
 		$this->dispatch( 'notification', [ 'body' => 'Quantity Updated' ] );
+	}
+	public function remove( CartService $cartService ) {
+		$cartService->remove( $this->variation );
+		$this->dispatch( 'cart.update' );
+		$this->dispatch( 'notification', [ 'body' => "{$this->variation->product->title} removed from card" ] );
 	}
 }
