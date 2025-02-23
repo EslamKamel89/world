@@ -10,6 +10,8 @@ use \App\Models\Cart;
 
 class CartService implements CartInterface {
 
+	use \App\Traits\Pr;
+
 
 	/**
 	 * @var Cart|null
@@ -25,8 +27,8 @@ class CartService implements CartInterface {
 	 * @return void
 	 */
 	public function create( ?User $user ) {
-		/** @var CartModel $instance*/
-		$instance = new CartModel();
+		/** @var Cart $instance*/
+		$instance = new Cart();
 		if ( $user ) {
 			$instance->user()->associate( $user );
 		}
@@ -96,5 +98,16 @@ class CartService implements CartInterface {
 	}
 	public function isEmpty() {
 		return $this->instance()->variations->isEmpty();
+	}
+
+	public function subtotal(): int|null {
+		$variations = $this->instance()->variations;
+		$sum = $variations->reduce( function (?int $carry, Variation $variation) {
+			return ( $variation->price + $variation->pivot->quantity ) + ( $carry ?? 0 );
+		} );
+		return $sum;
+	}
+	public function formatedSubtotal() {
+		return money( $this->subtotal() / 100 );
 	}
 }
