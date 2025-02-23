@@ -3,6 +3,7 @@
 use App\Cart\CartService;
 use App\Cart\Contracts\CartInterface;
 use App\Http\Controllers\CartIndexController;
+use App\Http\Controllers\CategoryShowController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductShowController;
 use App\Models\Category;
@@ -21,6 +22,7 @@ Route::view( 'profile', 'profile' )
 	->name( 'profile' );
 
 Route::get( '/products/{product:slug}', ProductShowController::class);
+Route::get( '/categories/{category:slug}', CategoryShowController::class);
 
 Route::get( '/cart', CartIndexController::class)->name( 'cart.index' );
 

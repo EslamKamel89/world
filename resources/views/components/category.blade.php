@@ -1,7 +1,7 @@
 @props( [ 'category' ] )
 <div>
     <div @class( [ 'font-semibold text-xl text-blue-800 leading-tight ' => $category->depth == 0 ] )>
-        <a href="/categories/{{$category->slug}}">
+        <a href="/categories/{{$category->slug}}" wire:navigate>
 
             {{ $category->title }}
         </a>
